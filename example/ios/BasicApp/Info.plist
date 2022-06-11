@@ -24,6 +24,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MBXAccessToken</key>
+	<string>pk.eyJ1IjoicHJvZm1leCIsImEiOiJjazB4eTY3eTcwOHA5M3BtdWFpOG55eTFtIn0.iW-C5PoHtkKz1UUiQNRFdQ</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
