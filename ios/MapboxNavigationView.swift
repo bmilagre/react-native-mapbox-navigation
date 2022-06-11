@@ -28,7 +28,9 @@ class MapboxNavigationView: UIView, NavigationViewControllerDelegate {
   @objc var destination: NSArray = [] {
     didSet { setNeedsLayout() }
   }
-  
+
+  @objc var checkpoints: NSArray = []
+
   @objc var shouldSimulateRoute: Bool = false
   @objc var showsEndOfRouteFeedback: Bool = false
   @objc var hideStatusView: Bool = false
@@ -71,11 +73,29 @@ class MapboxNavigationView: UIView, NavigationViewControllerDelegate {
     
     embedding = true
 
+    var waypoints: [Waypoint] = []
     let originWaypoint = Waypoint(coordinate: CLLocationCoordinate2D(latitude: origin[1] as! CLLocationDegrees, longitude: origin[0] as! CLLocationDegrees))
     let destinationWaypoint = Waypoint(coordinate: CLLocationCoordinate2D(latitude: destination[1] as! CLLocationDegrees, longitude: destination[0] as! CLLocationDegrees))
 
+    if(checkpoints.count > 0){
+      for checkpoint in checkpoints {
+          print("Checkpoint values --> \(checkpoint)")
+          print("Type --> \(type(of: checkpoint))")
+
+          //let checkpointWaypoint = Waypoint(coordinate: CLLocationCoordinate2D(latitude: checkpoint[1] as! CLLocationDegrees, longitude: checkpoint[0] as! CLLocationDegrees))
+          //waypoints.append(checkpointWaypoint)
+      }
+    }
+      
+    
+
+    //waypoints.append(originWaypoint)
+    //waypoints.append(destinationWaypoint)
+
     // let options = NavigationRouteOptions(waypoints: [originWaypoint, destinationWaypoint])
-    let options = NavigationRouteOptions(waypoints: [originWaypoint, destinationWaypoint], profileIdentifier: .automobileAvoidingTraffic)
+    let options = NavigationRouteOptions(waypoints: waypoints, profileIdentifier: .automobileAvoidingTraffic)
+    print("waypoints new")
+    print(waypoints)
 
     Directions.shared.calculate(options) { [weak self] (_, result) in
       guard let strongSelf = self, let parentVC = strongSelf.parentViewController else {

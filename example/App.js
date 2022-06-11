@@ -6,11 +6,11 @@
  * @flow strict-local
  */
 
-import React, {useEffect} from 'react';
-import {SafeAreaView, useColorScheme} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import React, { useEffect } from 'react';
+import { SafeAreaView, useColorScheme } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import NavigationComponent from './NavigationComponent';
-import {PermissionsAndroid} from 'react-native';
+import { PermissionsAndroid } from 'react-native';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -43,6 +43,7 @@ const App = () => {
       <NavigationComponent
         origin={[-105.140629, 39.760194]}
         destination={[-105.156544, 39.761801]}
+        checkpoints={[[-105.140629, 39.760194], [-105.156544, 39.761801]]}
       />
     </SafeAreaView>
   );

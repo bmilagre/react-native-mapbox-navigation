@@ -1,10 +1,10 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import MapboxNavigation from '@homee/react-native-mapbox-navigation';
 
 const Navigation = props => {
-  const {origin, destination} = props;
+  const { origin, destination, checkpoints = [] } = props;
 
   return (
     <View style={styles.container}>
@@ -14,6 +14,7 @@ const Navigation = props => {
           shouldSimulateRoute={true}
           origin={origin}
           destination={destination}
+          checkpoints={checkpoints}
           showsEndOfRouteFeedback={false}
           hideStatusView
           onLocationChange={event => {
@@ -23,7 +24,7 @@ const Navigation = props => {
             console.log('onRouteProgressChange', event.nativeEvent);
           }}
           onError={event => {
-            const {message} = event.nativeEvent;
+            const { message } = event.nativeEvent;
             // eslint-disable-next-line no-alert
             alert(message);
           }}
