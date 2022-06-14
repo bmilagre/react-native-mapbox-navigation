@@ -81,10 +81,7 @@ class MapboxNavigationView: UIView, NavigationViewControllerDelegate {
 
     if(checkpoints.count > 0){
       for checkpoint in checkpoints {
-          if let checkpoint = checkpoint as? Array<CLLocationDegrees> {
-              print("Checkpoint values --> \(checkpoint)")
-              print("Type --> \(type(of: checkpoint))")
-                    
+          if let checkpoint = checkpoint as? Array<CLLocationDegrees> {        
               let checkpointWaypoint = Waypoint(coordinate: CLLocationCoordinate2D(latitude: checkpoint[1] as! CLLocationDegrees, longitude: checkpoint[0] as! CLLocationDegrees))
               waypoints.append(checkpointWaypoint)
           }
