@@ -77,6 +77,8 @@ class MapboxNavigationView: UIView, NavigationViewControllerDelegate {
     let originWaypoint = Waypoint(coordinate: CLLocationCoordinate2D(latitude: origin[1] as! CLLocationDegrees, longitude: origin[0] as! CLLocationDegrees))
     let destinationWaypoint = Waypoint(coordinate: CLLocationCoordinate2D(latitude: destination[1] as! CLLocationDegrees, longitude: destination[0] as! CLLocationDegrees))
 
+    waypoints.append(originWaypoint)
+
     if(checkpoints.count > 0){
       for checkpoint in checkpoints {
           if let checkpoint = checkpoint as? Array<CLLocationDegrees> {
@@ -88,13 +90,9 @@ class MapboxNavigationView: UIView, NavigationViewControllerDelegate {
           }
       }
     }
-      
-    
 
-    //waypoints.append(originWaypoint)
-    //waypoints.append(destinationWaypoint)
+    waypoints.append(destinationWaypoint)
 
-    // let options = NavigationRouteOptions(waypoints: [originWaypoint, destinationWaypoint])
     let options = NavigationRouteOptions(waypoints: waypoints, profileIdentifier: .automobileAvoidingTraffic)
     print("waypoints new")
     print(waypoints)
