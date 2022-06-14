@@ -91,8 +91,6 @@ class MapboxNavigationView: UIView, NavigationViewControllerDelegate {
     waypoints.append(destinationWaypoint)
 
     let options = NavigationRouteOptions(waypoints: waypoints, profileIdentifier: .automobileAvoidingTraffic)
-    print("waypoints new")
-    print(waypoints)
 
     Directions.shared.calculate(options) { [weak self] (_, result) in
       guard let strongSelf = self, let parentVC = strongSelf.parentViewController else {
